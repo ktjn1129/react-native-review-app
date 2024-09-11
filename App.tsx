@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect, useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { Shop } from "./src/types/shop";
+import { shops } from "./mock/data";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+  const [shopList, setShopList] = useState<Shop[]>([]);
+
+  useEffect(() => {
+    setShopList(shops);
+  }, []);
+
+  const shopItems = shopList.map((shop, index) => (
+    <View style={{ margin: 10 }} key={index.toString()}>
+      <Text>{shop.name}</Text>
+      <Text>{shop.place}</Text>
     </View>
-  );
+  ));
+
+  return <View style={styles.container}>{shopItems}</View>;
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
