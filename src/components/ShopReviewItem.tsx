@@ -1,9 +1,9 @@
 import React from "react";
 import {
-  StyleSheet,
-  Image,
-  Text,
   Dimensions,
+  Image,
+  StyleSheet,
+  Text,
   TouchableOpacity,
 } from "react-native";
 import { Shop } from "../types/shop";
