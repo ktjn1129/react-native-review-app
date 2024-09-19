@@ -1,10 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
-import React from "react";
+import React, { useContext } from "react";
 import { MainTabNavigator } from "./MainTabNavigator";
 import { AuthScreen } from "../screens/AuthScreen";
+import { UserContext } from "../contexts/UserContext";
 
 export const AppNavigator = () => {
-  const user = null;
+  const { user } = useContext(UserContext);
 
   return (
     <NavigationContainer>

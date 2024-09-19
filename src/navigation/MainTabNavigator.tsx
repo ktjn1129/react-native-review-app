@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { HomeStackNavigator } from "../screens/HomeStackNavigator";
+import { HomeStackNavigator } from "../navigation/HomeStackNavigator";
 import { UserScreen } from "../screens/UserScreen";
 import { Feather } from "@expo/vector-icons";
 
@@ -9,9 +9,9 @@ const Tab = createBottomTabNavigator();
 export const MainTabNavigator = () => {
   return (
     <Tab.Navigator
-      tabBarOptions={{
-        activeTintColor: "#900",
-        inactiveTintColor: "#999",
+      screenOptions={{
+        tabBarActiveTintColor: "#900",
+        tabBarInactiveTintColor: "#999",
       }}
     >
       <Tab.Screen
