@@ -44,6 +44,6 @@ export const shops = [
 export const user = [
   {
     id: 10000,
-    name: "金田一",
+    name: "金田",
   },
 ];

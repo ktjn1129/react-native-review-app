@@ -11,7 +11,7 @@ type Props = {
   route: RouteProp<RootStackParamList, "Shop">;
 };
 
-export const ShopScreen: React.FC = ({ navigation, route }) => {
+export const ShopScreen: React.FC = ({ navigation, route }: Props) => {
   const { shop } = route.params;
 
   useEffect(() => {
