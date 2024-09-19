@@ -40,3 +40,10 @@ export const shops = [
     score: 2,
   },
 ];
+
+export const user = [
+  {
+    id: 10000,
+    name: "金田一",
+  },
+];
