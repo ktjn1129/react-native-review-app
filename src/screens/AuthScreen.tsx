@@ -1,18 +1,12 @@
-import { useEffect, useContext } from "react";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import {
-  StyleSheet,
-  SafeAreaView,
   ActivityIndicator,
+  SafeAreaView,
+  StyleSheet,
   Text,
 } from "react-native";
 import { user } from "../../mock/data";
 import { UserContext } from "../contexts/UserContext";
-
-const signIn = () => {
-  // ログイン処理
-  return user;
-};
 
 export const AuthScreen: React.FC = () => {
   const { setUser } = useContext(UserContext);
@@ -46,3 +40,8 @@ const styles = StyleSheet.create({
     color: "#888",
   },
 });
+
+// ログイン処理（後にAPI呼び出しに置換）
+const signIn = () => {
+  return user[0];
+};
