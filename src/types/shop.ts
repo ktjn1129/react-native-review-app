@@ -1,5 +1,5 @@
 export type Shop = {
-  id: number;
+  id?: string;
   name: string;
   place: string;
   imageUrl: string;
