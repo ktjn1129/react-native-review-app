@@ -9,7 +9,7 @@ type ShopRef = {
 };
 
 export type Review = {
-  id?: string;
+  id: string;
   text: string;
   score: number;
   imageUrl: string;

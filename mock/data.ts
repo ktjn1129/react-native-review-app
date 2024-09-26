@@ -1,6 +1,6 @@
 export const shops = [
   {
-    id: 10000,
+    id: "10000",
     name: "有楽町カフェ",
     place: "有楽町",
     imageUrl:
@@ -8,7 +8,7 @@ export const shops = [
     score: 3,
   },
   {
-    id: 10001,
+    id: "10001",
     name: "新橋パスタ",
     place: "新橋",
     imageUrl:
@@ -16,7 +16,7 @@ export const shops = [
     score: 4,
   },
   {
-    id: 10002,
+    id: "10002",
     name: "ピッツア浜松町",
     place: "浜松町",
     imageUrl:
@@ -24,7 +24,7 @@ export const shops = [
     score: 3.5,
   },
   {
-    id: 10003,
+    id: "10003",
     name: "田町ラーメン",
     place: "田町",
     imageUrl:
@@ -32,7 +32,7 @@ export const shops = [
     score: 4.5,
   },
   {
-    id: 10004,
+    id: "10004",
     name: "ビストロ品川",
     place: "品川",
     imageUrl:
@@ -43,7 +43,64 @@ export const shops = [
 
 export const user = [
   {
-    id: 10000,
+    id: "10000",
     name: "金田",
+  },
+];
+
+export const review = [
+  {
+    id: "10000",
+    text: "美味しかったです",
+    score: 5,
+    imageUrl: "",
+    user: {
+      id: "10000",
+      name: "金田",
+    },
+    shop: {
+      id: "10003",
+      name: "田町ラーメン",
+      place: "田町",
+      imageUrl:
+        "https://raw.githubusercontent.com/takahi5/shop-review/master/assets/ramen01.jpg",
+      score: 4.5,
+    },
+  },
+  {
+    id: "10000",
+    text: "美味しかったです",
+    score: 5,
+    imageUrl: "",
+    user: {
+      id: "10000",
+      name: "金田",
+    },
+    shop: {
+      id: "10003",
+      name: "田町ラーメン",
+      place: "田町",
+      imageUrl:
+        "https://raw.githubusercontent.com/takahi5/shop-review/master/assets/ramen01.jpg",
+      score: 4.5,
+    },
+  },
+  {
+    id: "10000",
+    text: "美味しかったです",
+    score: 5,
+    imageUrl: "",
+    user: {
+      id: "10000",
+      name: "金田",
+    },
+    shop: {
+      id: "10003",
+      name: "田町ラーメン",
+      place: "田町",
+      imageUrl:
+        "https://raw.githubusercontent.com/takahi5/shop-review/master/assets/ramen01.jpg",
+      score: 4.5,
+    },
   },
 ];
