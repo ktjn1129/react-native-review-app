@@ -1,8 +1,6 @@
 import React from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
-/* components */
+import { Image, StyleSheet, Text, View } from "react-native";
 import { Stars } from "../components/Stars";
-/* types */
 import { Review } from "../types/review";
 
 type Props = {

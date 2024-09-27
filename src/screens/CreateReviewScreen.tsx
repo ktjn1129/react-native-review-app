@@ -7,7 +7,8 @@ import { IconButton } from "../components/IconButton";
 import { Loading } from "../components/Loading";
 import { StarInput } from "../components/StarInput";
 import { TextArea } from "../components/TextArea";
-import { UserContext } from "../contexts/UserContext";
+import { ReviewsContext } from "../contexts/reviewsContext";
+import { UserContext } from "../contexts/userContext";
 import { pickImage } from "../lib/image-picker";
 import { RootStackParamList } from "../types/navigation";
 import { Review } from "../types/review";
@@ -18,13 +19,14 @@ type Props = {
   route: RouteProp<RootStackParamList, "CreateReview">;
 };
 
-export const CreateReviewScreen: React.FC = ({ navigation, route }: Props) => {
+export const CreateReviewScreen: React.FC<Props> = ({ navigation, route }) => {
   const { shop } = route.params;
   const [text, setText] = useState<string>("");
   const [score, setScore] = useState<number>(3);
-  const [imageUri, setImageUri] = useState<string>("");
+  const [imageUri, setImageUri] = useState<string>();
   const [loading, setLoading] = useState<boolean>(false);
   const { user } = useContext(UserContext);
+  const { reviews, setReviews } = useContext(ReviewsContext);
 
   useEffect(() => {
     navigation.setOptions({
@@ -35,8 +37,12 @@ export const CreateReviewScreen: React.FC = ({ navigation, route }: Props) => {
     });
   }, [shop]);
 
+  useEffect(() => {
+    console.log(reviews); // レビューが追加された後、ここに新しいレビューが表示されるか
+  }, [reviews]);
+
   const onSubmit = async () => {
-    if (!text || !iamgeUri) {
+    if (!text || !imageUri) {
       Alert.alert("レビューまたは画像がありません");
       return;
     }
@@ -49,6 +55,7 @@ export const CreateReviewScreen: React.FC = ({ navigation, route }: Props) => {
     const downloadUrl = await uploadImage(imageUri, storagePath);
 
     const review = {
+      id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       user: {
         name: user.name,
         id: user.id,
@@ -64,6 +71,10 @@ export const CreateReviewScreen: React.FC = ({ navigation, route }: Props) => {
 
     await addReview(shop.id, review);
 
+    // レビューの即時反映
+    console.log("Set reviews with new review", review);
+    setReviews([review, ...reviews]);
+
     setLoading(false);
     navigation.goBack();
   };
@@ -71,7 +82,6 @@ export const CreateReviewScreen: React.FC = ({ navigation, route }: Props) => {
   const onPickImage = async () => {
     const uri = await pickImage();
     setImageUri(uri);
-    console.log(uri);
   };
 
   return (
@@ -111,10 +121,21 @@ const styles = StyleSheet.create({
   },
 });
 
-// レビュー更新処理（後ほどAPI呼び出しに置換）
-const addReview = (shopId: string, review: Review) => {};
-
 // 画像アップロード処理（後ほどAPI呼び出しに置換）
 const uploadImage = (uri: string, path: string) => {
-  return "";
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const mockDownloadUrl = `https://example.com/${path}`;
+      resolve(mockDownloadUrl);
+    }, 1000);
+  });
+};
+
+// レビュー登録処理（後ほどAPI呼び出しに置換）
+const addReview = (shopId: string, review: Review) => {
+  return new Promise<void>((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, 1000);
+  });
 };

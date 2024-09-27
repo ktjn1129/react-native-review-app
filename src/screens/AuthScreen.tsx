@@ -6,7 +6,7 @@ import {
   Text,
 } from "react-native";
 import { user } from "../../mock/data";
-import { UserContext } from "../contexts/UserContext";
+import { UserContext } from "../contexts/userContext";
 
 export const AuthScreen: React.FC = () => {
   const { setUser } = useContext(UserContext);

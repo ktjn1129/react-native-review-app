@@ -5,16 +5,17 @@ import { SafeAreaView, StyleSheet } from "react-native";
 import { user } from "../../mock/data";
 import { Button } from "../components/Button";
 import { Form } from "../components/Form";
-import { UserContext } from "../contexts/UserContext";
+import { UserContext } from "../contexts/userContext";
 import { RootStackParamList } from "../types/navigation";
 import { Loading } from "../components/Loading";
+import { User } from "../types/user";
 
 type Props = {
   navigation: StackNavigationProp<RootStackParamList, "User">;
   route: RouteProp<RootStackParamList, "User">;
 };
 
-export const UserScreen: React.FC = ({ navigation, route }: Props) => {
+export const UserScreen: React.FC<Props> = ({ navigation, route }) => {
   const { user, setUser } = useContext(UserContext);
   const [name, setName] = useState<string>(user.name);
   const [loading, setLoading] = useState<boolean>(false);
@@ -22,7 +23,7 @@ export const UserScreen: React.FC = ({ navigation, route }: Props) => {
   const onSubmit = async () => {
     setLoading(true);
     const updatedUser = await updateUser(user.id, name);
-    setUser(updatedUser);
+    setUser(updatedUser as User);
     setLoading(false);
   };
 
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
 });
 
 // ユーザー更新処理（後にAPI呼び出しに置換）
-const updateUser = (userId, newName) => {
+const updateUser = (userId: string, newName: string) => {
   const targetUser = user.find((u) => u.id === userId);
 
   if (targetUser) {

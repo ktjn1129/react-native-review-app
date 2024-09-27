@@ -1,28 +1,28 @@
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { useContext, useEffect } from "react";
 import { FlatList, SafeAreaView, StyleSheet } from "react-native";
-import { ShopDetail } from "../components/ShopDetail";
-import { FloatingActionButton } from "../components/FloatingActionButton";
-import { RootStackParamList } from "../types/navigation";
-import { useEffect, useState } from "react";
-import { ReviewItem } from "../components/ReviewItem";
-import { Review } from "../types/review";
 import { review } from "../../mock/data";
+import { FloatingActionButton } from "../components/FloatingActionButton";
+import { ReviewItem } from "../components/ReviewItem";
+import { ShopDetail } from "../components/ShopDetail";
+import { ReviewsContext } from "../contexts/reviewsContext";
+import { RootStackParamList } from "../types/navigation";
 
 type Props = {
   navigation: StackNavigationProp<RootStackParamList, "Shop">;
   route: RouteProp<RootStackParamList, "Shop">;
 };
 
-export const ShopScreen: React.FC = ({ navigation, route }: Props) => {
+export const ShopScreen: React.FC<Props> = ({ navigation, route }) => {
   const { shop } = route.params;
-  const [reviews, setReviews] = useState<Review[]>([]);
+  const { reviews, setReviews } = useContext(ReviewsContext);
 
   useEffect(() => {
     navigation.setOptions({ title: shop.name });
 
     setReviews(review);
-  });
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
